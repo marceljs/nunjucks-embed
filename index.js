@@ -28,7 +28,7 @@ class Embed {
 	run(context, template, content, callback) {
 	    return context.env.renderString(
 	    	`{% extends "${template}" %}${content()}`,
-	    	this.with_ctx ? context.ctx : {},
+	    	this.with_ctx !== false ? context.ctx : {},
 	    	callback
 	    );
 	}

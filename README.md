@@ -41,7 +41,7 @@ Results in:
 
 ### Context
 
-By default, the embedded template will not have access to the current context. To explicitly pass or ingore it, use `with context` and `without context`:
+By default, the embedded template will have access to the current context. To explicitly pass or ingore it, use `with context` and `without context`:
 
 ```njk
 {% embed with context 'note.njk' %}
