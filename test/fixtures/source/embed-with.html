@@ -1,0 +1,6 @@
+{% set foo = 'bar' %}
+{% embed with context "components/note.html" %}
+	{% block content %}
+		Hello
+	{% endblock %}
+{% endembed %}

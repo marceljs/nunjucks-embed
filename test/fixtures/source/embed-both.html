@@ -1,0 +1,22 @@
+{% set foo = 'bar' %}
+{% embed with context "components/note.html" %}
+	{% block content %}
+		Hello
+	{% endblock %}
+{% endembed %}
+{% embed without context "components/note.html" %}
+	{% block content %}
+		Hello
+	{% endblock %}
+{% endembed %}
+{% set foo = 'bar2' %}
+{% embed without context "components/note.html" %}
+	{% block content %}
+		Hello
+	{% endblock %}
+{% endembed %}
+{% embed with context "components/note.html" %}
+	{% block content %}
+		Hello
+	{% endblock %}
+{% endembed %}
