@@ -1,0 +1,7 @@
+<h1>Posts: {{ posts.length }}</h1>
+{% for post in posts %}
+	{% embed "components/post.html" %}
+		{% block title %}{{ post.title }}{% endblock %}
+		{% block excerpt %}{{ post.excerpt }}{% endblock %}
+	{% endembed %}
+{% endfor %}
