@@ -1,6 +1,7 @@
 class Embed {
-	constructor(options) {
+	constructor(options = {}) {
 		this.tags = ['embed'];
+		this.sync = options.sync !== undefined ? options.sync : true;
 	}
 
 	parse(parser, nodes, lexer) {
@@ -17,13 +18,18 @@ class Embed {
 	    // TODO find way to pass this flag
 	    this.with_ctx = with_ctx;
 
-	    return new nodes.CallExtension(this, 'run', args, [content]);
+	    if (this.sync) {
+	    	return new nodes.CallExtension(this, 'run', args, [content]);
+	    } else {
+	    	return new nodes.CallExtensionAsync(this, 'run', args, [content]);
+	    }	    
 	}
 
 	run(context, template, content, callback) {
 	    return context.env.renderString(
 	    	`{% extends "${template}" %}${content()}`,
-	    	this.with_ctx ? context.ctx : {}
+	    	this.with_ctx ? context.ctx : {},
+	    	callback
 	    );
 	}
 }
